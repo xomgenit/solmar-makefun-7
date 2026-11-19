@@ -1,0 +1,33 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: #111; font-family: system-ui, sans-serif; color: #fff; }
+#game { display: block; width: 100vw; height: 100vh; }
+#hud { position: fixed; inset: 0; pointer-events: none; z-index: 5; }
+#top-left { position: absolute; top: 14px; left: 14px; }
+#health-bar { width: 220px; height: 20px; background: rgba(0,0,0,0.6); border: 1px solid #fff3; border-radius: 4px; position: relative; overflow: hidden; }
+#health-fill { height: 100%; width: 100%; background: linear-gradient(90deg, #27ae60, #2ecc71); }
+#health-text { position: absolute; inset: 0; text-align: center; font-size: 12px; line-height: 20px; font-weight: bold; text-shadow: 0 1px 2px #000; }
+#cash { font-size: 26px; font-weight: bold; color: #2ecc71; text-shadow: 0 2px 4px #000; margin-top: 6px; }
+#stars { font-size: 22px; color: #f1c40f; text-shadow: 0 2px 4px #000; letter-spacing: 2px; }
+#zone { font-size: 13px; letter-spacing: 2px; color: #fff; opacity: 0.85; text-shadow: 0 1px 3px #000; }
+#objective { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); text-align: center; background: rgba(0,0,0,0.55); padding: 8px 18px; border-radius: 6px; border: 1px solid #fff2; }
+#objective-title { font-size: 17px; font-weight: bold; color: #ffd34d; }
+#objective-text { font-size: 13px; color: #eee; }
+#speedometer { position: absolute; right: 16px; bottom: 180px; text-align: right; background: rgba(0,0,0,0.55); padding: 8px 12px; border-radius: 6px; }
+#speed { font-size: 24px; font-weight: bold; }
+#car-health { font-size: 13px; color: #ffb347; }
+#minimap { position: absolute; right: 16px; bottom: 16px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.7); background: #1c2b1a; }
+#hint { position: absolute; left: 50%; bottom: 24px; transform: translateX(-50%); font-size: 15px; font-weight: bold; text-shadow: 0 2px 4px #000; background: rgba(0,0,0,0.5); padding: 6px 14px; border-radius: 6px; }
+#hint:empty { display: none; }
+#banner { position: absolute; left: 50%; top: 22%; transform: translateX(-50%); text-align: center; background: rgba(0,0,0,0.65); border: 2px solid #f1c40f; border-radius: 8px; padding: 12px 28px; }
+#banner-title { font-size: 30px; font-weight: bold; letter-spacing: 2px; }
+#banner-sub { font-size: 15px; color: #fff; }
+.overlay { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.55); z-index: 10; }
+.panel { background: rgba(10,10,16,0.92); border: 1px solid #f1c40f55; border-radius: 12px; padding: 32px 40px; text-align: center; max-width: 560px; }
+.panel h1 { font-size: 64px; letter-spacing: 8px; color: #f1c40f; text-shadow: 0 4px 0 #b9770e; }
+.panel h2 { font-size: 22px; letter-spacing: 4px; color: #fff; margin: 4px 0 14px; }
+.panel p { font-size: 15px; color: #ddd; line-height: 1.5; margin-bottom: 16px; }
+.panel .fine { font-size: 12px; color: #999; margin-top: 18px; margin-bottom: 0; }
+.panel button { display: block; width: 100%; margin: 8px 0; padding: 12px; font-size: 17px; font-weight: bold; letter-spacing: 2px; color: #111; background: #f1c40f; border: none; border-radius: 6px; cursor: pointer; }
+.panel button:hover { background: #ffd34d; }
+.panel button:disabled { background: #666; color: #ccc; cursor: not-allowed; }
+#save-note { color: #2ecc71; font-size: 14px; }
