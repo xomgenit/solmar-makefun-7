@@ -3,6 +3,7 @@ import { zoneAt, PIER } from './city.js';
 import { drawCar } from './vehicles.js';
 import { drawEnemy } from './combat.js';
 import { drawEffects } from './effects.js';
+import { STASHES } from './missions.js';
 
 export function drawWorld(game, ctx, cam, vw, vh) {
   const city = game.city;
@@ -71,6 +72,19 @@ export function drawWorld(game, ctx, cam, vw, vh) {
     ctx.beginPath(); ctx.arc(game.missionMarker.x, game.missionMarker.y, pulse, 0, Math.PI * 2); ctx.stroke();
     ctx.fillStyle = '#ffd34d';
     ctx.beginPath(); ctx.arc(game.missionMarker.x, game.missionMarker.y, 5, 0, Math.PI * 2); ctx.fill();
+  }
+  // Cash stash glints (faint green pulse; only untaken ones).
+  if (game.missions) {
+    const taken = game.missions.stashesTaken || [];
+    for (let i = 0; i < STASHES.length; i++) {
+      if (taken.includes(i)) continue;
+      const s = STASHES[i];
+      const pr = 8 + Math.sin(game.time * 3 + i * 2) * 3;
+      ctx.strokeStyle = 'rgba(46,204,113,0.8)'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(s.x, s.y, pr, 0, Math.PI * 2); ctx.stroke();
+      ctx.fillStyle = 'rgba(46,204,113,0.9)';
+      ctx.beginPath(); ctx.arc(s.x, s.y, 3, 0, Math.PI * 2); ctx.fill();
+    }
   }
   // Zone label.
   ctx.fillStyle = 'rgba(255,255,255,0.75)'; ctx.font = 'bold 15px system-ui, sans-serif'; ctx.textAlign = 'left';

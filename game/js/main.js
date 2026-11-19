@@ -67,7 +67,7 @@ function resetGame(seed) {
   game.time = 0;
   game.stats = { kills: 0, carsStolen: 0, missionsDone: 0 };
   game.objective = { title: 'Free Roam', text: 'Explore Solmar Bay' };
-  game.missionMarker = game.city.landmarkById.pier;
+  game.missionMarker = { x: game.city.landmarkById.pier.cx, y: game.city.landmarkById.pier.cy };
   game.effects.particles.length = 0; game.effects.tracers.length = 0;
   game.effects.floaters.length = 0; game.effects.skids.length = 0;
   const hideout = game.city.landmarkById.hideout;
@@ -96,7 +96,7 @@ function resetGame(seed) {
 function startNewGame() {
   const seed = PARAM_SEED ?? Math.floor(Math.random() * 100000);
   resetGame(seed);
-  game.missions.start('free-roam');
+  game.missions.start('first-wheels');
   game.state = 'playing';
   hideOverlays();
   game.hud.showHud(true);
@@ -113,7 +113,7 @@ function continueGame() {
   game.player.x = data.x ?? game.player.x;
   game.player.y = data.y ?? game.player.y;
   if (data.car) {
-    const car = createCar(data.car.x, data.car.y, data.car.angle, data.car.model, 'player');
+    const car = createCar(data.car.x, data.car.y, data.car.angle, data.car.model, 'player', data.car.color);
     car.hp = data.car.hp ?? 100;
     game.cars.push(car);
     game.player.car = car;
